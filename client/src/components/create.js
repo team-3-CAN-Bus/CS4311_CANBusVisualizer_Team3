@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import '../styles/create.css'
 
 export default function Create() {
   const [form, setForm] = useState({
@@ -39,7 +40,7 @@ export default function Create() {
   }
 
   return (
-    <div>
+    <div id='parentCreate'>
       <h3>Create Project</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">

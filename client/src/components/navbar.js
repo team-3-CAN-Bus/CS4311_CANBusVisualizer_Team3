@@ -2,15 +2,13 @@ import React from "react";
  
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
- 
-// We import NavLink to utilize the react router.
-import { NavLink } from "react-router-dom";
+
  
 // Here, we display our Navbar
-export default function Navbar() {
+function Navbar() {
  return (
    <div>
-     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+     <nav className="navbar navbar-expand-lg navbar-light" >
        <button
          className="navbar-toggler"
          type="button"
@@ -26,13 +24,13 @@ export default function Navbar() {
        <div className="collapse navbar-collapse" id="navbarSupportedContent">
          <ul className="navbar-nav ml-auto">
            <li className="nav-item">
-             <NavLink className="nav-link" to="/create">
-               Create Project
-             </NavLink>
+           <button className="navbarBtn">File</button>
+           <button className="navbarBtn">Edit</button>
+            <button className="navbarBtn">View</button>
            </li>
          </ul>
        </div>
      </nav>
    </div>
  );
-}
+} export default Navbar

@@ -5,24 +5,22 @@ import '../styles/Landing.css'
 const LandingPage =() =>{
 
     let navigate = useNavigate(); 
-    return(
-    <label className='box'>
-        <div>
-            <div id="container">
-                <h2>CAN Bus Visualizer</h2>
-            </div>
-        </div>
-        <div>
-            <div id='container'>
-                <button onClick={()=>{navigate('/create')}}>Create Project</button>
-                <button>Open Project</button>
-                <button>Sync Project</button>
-                <button>Archive Project</button>
-                <button onClick={()=>{navigate('/projects')}}>Project List (DB test)</button>
-                <button onClick={()=>{navigate('/displayer')}}>Displayer</button>
-            </div>
-        </div>
-    </label>
+    return( 
+        <div id='container'>
+            <label className='box'>
+                    <div className='content'>
+                        <h2>CAN Bus Visualizer</h2>
+                    </div>
+                    <div className='content'>
+                        <button onClick={()=>{navigate('/create')}}>Create Project</button>
+                        <button>Open Project</button>
+                        <button>Sync Project</button>
+                        <button>Archive Project</button>
+                        <button onClick={()=>{navigate('/projects')}}>Project List (DB test)</button>
+                        <button onClick={()=>{navigate('/displayer')}}>Displayer</button>
+                    </div>
+            </label>
+        </div>                    
     );
 }
 export default LandingPage

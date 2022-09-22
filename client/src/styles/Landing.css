@@ -13,19 +13,34 @@
     height: 50px;
     width: auto;
     padding: 20px;
+    border-radius: 20px;
   }
+:active, button:hover{
+  color: gray;
+}
+
   h2{
     align-content: center;
     color: white;
   }
 
-  div{
+  .content{
     align-content: center;
     width: 100%;
     height: auto;
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
+ 
   #container{
-    height:auto;
+    background-image: url('../styles/assets/techBg.jpg');
+    background-repeat: auto;
+    background-size:cover;
+    height: 100vh;
+    height: 100vw;
   }
+
+
+
+   
+ 

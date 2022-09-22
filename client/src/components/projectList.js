@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import '../styles/projectList.css'
 const Project = (props) => (
     <tr>
         <td>{props.project.analystId}</td>
@@ -68,10 +68,10 @@ export default function ProjectList() {
 
     // This following section will display the table with the records of individuals.
     return (
-        <div>
+        <div id='parentProjects'>
             <br />
             <h3>Project List</h3>
-            <table className="table table-striped" style={{ marginTop: 20 }}>
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>Analyst ID</th>

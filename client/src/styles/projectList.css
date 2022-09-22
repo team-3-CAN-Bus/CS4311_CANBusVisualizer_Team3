@@ -1,10 +1,10 @@
 table{
     padding-top: 10px;
     margin: auto;
-    width: 95% ;
-    border: 10px solid #2D4263;
+    width: 80% ;
+    border: 10px solid #7285a5;
     height: auto;
-    background-color: #5e8aad;
+    background-color: #959799;
     border: 5px solid black;
  }
 tbody{
@@ -22,14 +22,8 @@ tbody{
     background-color: rgb(206, 212, 216);
  }
 
-nav{
-   background-color: rgb(87, 87, 87);
-   height: 60px;
-}
-.navbarBtn{
-   border-radius: 0px;
-   height: 0px;
-   width: 90px;
-   align-items: center;
-   background-color: #999ea7;
-}
+ #parentProjects{
+    background-color: rgb(117, 117, 117);
+    height: 100vh;
+    width: auto;
+ }

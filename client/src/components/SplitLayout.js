@@ -4,11 +4,17 @@ import Split from 'react-split'
 import Canvas from '../components/Canvas.js'
 import '../styles/SplitLayout.css'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../components/navbar.js'
 
 const SplitLayout = ()=>{ 
     return(
     <Split className='split'>
     <div id='col1'>
+        <Navbar>
+        <button>File</button>
+        <button>Edit</button>
+        <button>View</button>
+        </Navbar>
         <table>
             <thead>
                 <tr>
@@ -102,6 +108,11 @@ const SplitLayout = ()=>{
     </div>
     
     <div id='col2'>
+    <Navbar>
+        <button>File</button>
+        <button>Edit</button>
+        <button>Nodes</button>
+    </Navbar>
         <Canvas ></Canvas>
     </div>
 </Split>
