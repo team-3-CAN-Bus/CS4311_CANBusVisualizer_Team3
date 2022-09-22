@@ -26,7 +26,7 @@ export default function ProjectList() {
     // This method fetches the records from the database.
     useEffect(() => {
         async function getProjects() {
-            const response = await fetch(`http://localhost:5000/projects/`);
+            const response = await fetch(`http://localhost:3000/projects/`);
 
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
@@ -45,7 +45,7 @@ export default function ProjectList() {
 
     // This method will delete a record
     async function deleteProject(id) {
-        await fetch(`http://localhost:5000/${id}`, {
+        await fetch(`http://localhost:3000/${id}`, {
             method: "DELETE"
         });
 

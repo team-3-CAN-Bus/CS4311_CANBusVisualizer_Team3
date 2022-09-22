@@ -23,7 +23,7 @@ export default function Create() {
 
     const newProject = { ...form };
 
-    await fetch("http://localhost:5000/projects/add", {
+    await fetch("http://localhost:3000/projects/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default function Create() {
         return;
       });
     setForm({ analyst: "",  canType: "", vehicleMake: "", vehicleModel: "", vehicleYear: "", VIN: ""});
-    navigate("/");
+    navigate("/projects");
   }
 
   return (

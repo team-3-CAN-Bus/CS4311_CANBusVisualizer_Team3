@@ -1,0 +1,25 @@
+/*table{
+    padding-top: 10px;
+    margin: auto;
+    width: 80% ;
+    border: 10px solid #2D4263;
+    height: auto;
+    background-color: #5e8aad;
+    border: 5px solid black;
+ }
+tbody{
+    border: 5px solid black;
+}
+ th{
+    background-color: #438bff;
+    border: 5px solid black;
+ }
+ td{
+    background-color: gray;
+ }
+
+ .active, td:hover{
+    background-color: rgb(206, 212, 216);
+ }
+ */
+

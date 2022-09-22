@@ -7,14 +7,17 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Create from "./components/create";
 import ProjectList from "./components/projectList";
+import LandingPage from "./pages/LandingPage";
+import DisplayerPage from "./pages/DisplayerPage";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
       <Routes>
-        <Route exact path="/" element={<ProjectList />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/projects" element={<ProjectList />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/displayer" element={<DisplayerPage />} />
       </Routes>
     </div>
   );
