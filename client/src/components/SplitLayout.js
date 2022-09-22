@@ -11,9 +11,7 @@ const SplitLayout = ()=>{
     <Split className='split'>
     <div id='col1'>
         <Navbar>
-        <button>File</button>
-        <button>Edit</button>
-        <button>View</button>
+
         </Navbar>
         <table>
             <thead>

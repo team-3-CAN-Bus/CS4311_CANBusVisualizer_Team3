@@ -1,6 +1,6 @@
 .box{
     float: none;
-    background-color: rgba(4, 40, 66,0.8);
+    background-color: rgba(4, 40, 66,0.9);
     width: 60vw;
     height: 70vh;
     padding-top: 50px;
@@ -14,9 +14,10 @@
     width: auto;
     padding: 20px;
     border-radius: 20px;
+    background-color: azure;
   }
 :active, button:hover{
-  color: gray;
+  color: rgb(154, 204, 224);
 }
 
   h2{

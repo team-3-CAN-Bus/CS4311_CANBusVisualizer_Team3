@@ -7,6 +7,7 @@ const LandingPage =() =>{
     let navigate = useNavigate(); 
     return( 
         <div id='container'>
+            <div className='something' style={{height:'10vh',width:'20vw', float:'left'}}></div>
             <label className='box'>
                     <div className='content'>
                         <h2>CAN Bus Visualizer</h2>
