@@ -4,7 +4,7 @@ var nodeList = {};
 
 let file = '../dist/J1939-Sample-Data-CL3000.TXT';
 let lastNodeClicked ='';
-
+let offset = 1000;
 let fileContents = ["11T082554602;1;cf00203;cd402800043828ff","11T082554603;1;c00000b;fcffff7dffffffff",
 "11T082554604;1;cf00400;f4dede3028fff0ff","11T082554604;1;18fee527;be7a0400d8b60e00",
 "11T082554606;1;cef27fd;20fffae1ff00ffff", "11T082554611;1;c000003;ecffffffffffffff"];
@@ -30,6 +30,8 @@ for(let node in nodeList){
   newNode.id = `${nodeList[node]}`;
   newNode.className ='node';
   newNode.innerHTML = `<img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
+  newNode.style.left = `${offset}px`;
+  offset += 80;
   right.append(newNode);
   dragElement(newNode);
 
@@ -43,7 +45,6 @@ addNodeForm.addEventListener('submit', async (event) => {
   const name = document.getElementById('nodeName');
   const id = document.getElementById("nodeID");
   let newNode = document.createElement("div");
-  
   newNode.id = `node6`;
   newNode.className ='node';
   newNode.innerHTML = `<img id="${newNode.id}"class="icon" src="../dist/assets/node1.png" alt ="s"/>test`;
