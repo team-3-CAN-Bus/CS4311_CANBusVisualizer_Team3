@@ -1,23 +1,27 @@
 .box{
-    float: none;
     background-color: rgba(4, 40, 66,0.9);
-    width: 60vw;
-    height: 70vh;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-radius: 110px 110px 110px 110px;
+    max-width: 75%;
+    max-height: 85%;
+    border-radius: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
-  button{
-    height: 50px;
-    width: auto;
-    padding: 20px;
+
+  .button-landing{
+    min-height: 100px;
+    min-width: 160px;
+    max-width: fit-content;
     border-radius: 20px;
-    background-color: azure;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: cadetblue;
   }
-:active, button:hover{
-  color: rgb(154, 204, 224);
+
+  :active, .button-landing:hover {
+  background-color: rgb(154, 204, 224);
 }
 
   h2{
@@ -26,21 +30,37 @@
   }
 
   .content{
-    align-content: center;
-    width: 100%;
-    height: auto;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    max-height: 75%;
+    display: flex;
+    flex-wrap: wrap;
   }
  
   #container{
-    background-image: url('../styles/assets/techBg.jpg');
-    background-repeat: auto;
-    background-size:cover;
-    height: 100vh;
-    height: 100vw;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-image: url('../styles/assets/Landing.png');
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
-
+  #logo{
+    border-radius: 20px;
+    min-width: 27%;
+    max-height: 37%;
+  }
+.icon{
+  max-height: 40px;
+  max-width: 40px;
+}
+.button-margin{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 
    

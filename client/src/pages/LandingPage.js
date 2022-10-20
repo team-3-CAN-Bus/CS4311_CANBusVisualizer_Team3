@@ -7,20 +7,30 @@ const LandingPage =() =>{
     let navigate = useNavigate(); 
     return( 
         <div id='container'>
-            <div className='something' style={{height:'10vh',width:'20vw', float:'left'}}></div>
-            <label className='box'>
+            <div className='box'>
+                    <img className='image' src={require('../styles/assets/Low Resolution Logo - Transparent Background.png')}
+                        id="logo" alt='something'/>
                     <div className='content'>
-                        <h2>CAN Bus Visualizer</h2>
+                            <div className='button-margin'>                        
+                            <button className='button-landing' onClick={()=>{navigate('/create')}}><img className='icon' src={require('../styles/assets/layer.png')} alt='s'/>Create Project</button>
+                            </div>
+                            <div className='button-margin'>
+                            <button className='button-landing' ><img className='icon' src={require('../styles/assets/folders.png')} alt='s'/> Open Project</button>
+                            </div>
+                            <div className='button-margin'>
+                            <button className='button-landing' ><img className='icon' src={require('../styles/assets/reload.png')} alt='s'/> Sync Project</button>
+                            </div>
+                            <div className='button-margin'>
+                            <button className='button-landing' ><img className='icon' src={require('../styles/assets/archive.png')} alt='s'/> Archive Project</button>
+                            </div>
+                            <div className='button-margin'>
+                            <button className='button-landing' onClick={()=> {navigate('/projects')}}> <img className='icon' src={require('../styles/assets/archived-list.png')} alt='s'/>Projects (DB test)</button>
+                            </div>
+                            <div className='button-margin'>
+                            <button className='button-landing' onClick={()=>{navigate('/displayer')}}> <img className='icon' src={require('../styles/assets/archived-list.png')} alt='s'/>Displayer</button>                                               
+                            </div>
                     </div>
-                    <div className='content'>
-                        <button onClick={()=>{navigate('/create')}}>Create Project</button>
-                        <button>Open Project</button>
-                        <button>Sync Project</button>
-                        <button>Archive Project</button>
-                        <button onClick={()=>{navigate('/projects')}}>Project List (DB test)</button>
-                        <button onClick={()=>{navigate('/displayer')}}>Displayer</button>
-                    </div>
-            </label>
+            </div>
         </div>                    
     );
 }

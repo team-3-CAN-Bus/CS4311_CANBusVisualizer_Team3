@@ -11,7 +11,9 @@ const SplitLayout = ()=>{
     <Split className='split'>
     <div id='col1'>
         <Navbar>
-
+        <button className='button-nav-displayer'>File</button>
+        <button className='button-nav-displayer'>Edit</button>
+        <button className='button-nav-displayer'>Nodes</button>
         </Navbar>
         <table>
             <thead>
@@ -107,9 +109,9 @@ const SplitLayout = ()=>{
     
     <div id='col2'>
     <Navbar>
-        <button>File</button>
-        <button>Edit</button>
-        <button>Nodes</button>
+        <button className='button-nav-displayer'>File</button>
+        <button className='button-nav-displayer'>Edit</button>
+        <button className='button-nav-displayer'>Nodes</button>
     </Navbar>
         <Canvas ></Canvas>
     </div>

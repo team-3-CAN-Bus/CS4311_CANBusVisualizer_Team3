@@ -4,9 +4,7 @@ import '../styles/Displayer.css'
 
 const DisplayerPage = ()=> {
     return(
-        <div>
-            <SplitLayout></SplitLayout>
-        </div>
+        <SplitLayout></SplitLayout>
     );
 }
 export default DisplayerPage;

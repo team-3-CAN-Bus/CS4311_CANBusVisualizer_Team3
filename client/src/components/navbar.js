@@ -24,9 +24,9 @@ function Navbar() {
        <div className="collapse navbar-collapse" id="navbarSupportedContent">
          <ul className="navbar-nav ml-auto">
            <li className="nav-item">
-           <button className="navbarBtn">File</button>
-           <button className="navbarBtn">Edit</button>
-            <button className="navbarBtn">View</button>
+              <button className='button-nav-displayer'>File</button>
+              <button className='button-nav-displayer'>Edit</button>
+              <button className='button-nav-displayer'>Nodes</button>
            </li>
          </ul>
        </div>
