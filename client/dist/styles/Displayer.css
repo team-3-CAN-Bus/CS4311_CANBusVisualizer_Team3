@@ -1,3 +1,4 @@
+/*the left side of the page style*/
 #left-column{
     background-color: rgb(155, 155, 155);
     height: 100%;
@@ -10,7 +11,7 @@
     border: 1px solid;
     border-color: black;
 }
-
+/*Right side of the page style*/
 #right-column{
     background-image: url('../assets/CAR.png');
     background: size 150px;
@@ -26,6 +27,7 @@
     border-color: black;
 }
 
+/* The container that contains everything in the page*/
 #container{
     height: 100vh;
     width: 100vw;
@@ -37,51 +39,60 @@
     clear:both;
     display: table;
 }
-
+/*Testing, change how the elements are shown inside of the body*/
 body{
     align-items: center;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
 }
-
+/*style of the table, table header and table cell*/
 table, th, td {
     border: 1px solid;
 
 }
-
+/*style props for the table only*/
 table{
     width: 100%;
     height:auto;
     background-color: white;
 }
-
-tr:active tr:hover{
-    background-color: rgb(231, 0, 0);
+/*doesn't work*/
+tr:hover{
+    background-color: rgb(108, 150, 150);
 }
 
+th:hover{
+  background-color: rgb(78, 76, 76);
+  color:white;
+}
+/*props for the headers only*/
 th{
     background-color: rgb(180, 180, 180);
 }
-tr:nth-child(even) {
+/*for the table to have rows of different colors (alternating)*/
+/*tr:nth-child(even) {
     background-color: #f2f2f2;
-}
+}*/
 
+/*buttons in the tool bar */
 .toolbar-button{
     min-width: 30px;
     height: 30px;
     background-color: rgb(168, 165, 165);
 }
-
+/*the bar on top of the map and table*/
 .toolbar{
     width: 100%;
     height: 40px;
     background-color: gray;
     padding-right: 30px;
 }
+/*changed the body background*/
 body{
     background-color: gray;
 }
+
 .dropdown {
     float: left;
     overflow: hidden;
@@ -128,15 +139,16 @@ body{
   .dropdown:hover .dropdown-content {
     display: block;
   }
-
+/*It's not being used so far, maybe later*/
   #canvas{
     background-color: rgba(249, 6, 6, 0.0);
   }
 
+  /*Html element with class node: the */
   .node{
     z-index: 9;
-    cursor: move;
-    position: absolute;
+    cursor: move;/*the cursor will change to a cross when hovering over the element*/
+    position: absolute;/*properties that will change the way the elemtn is displayed*/
     display:flex;
     flex-wrap: wrap;
     border-radius: 25px;
@@ -144,9 +156,11 @@ body{
     max-width: 80px;
     padding: 12px;
   }
+  /*When the node is clicked on, change the color to blue*/
   .node:active{
   background-color: aqua;
 }
+/*elements of class icon, it's just an img element*/
   .icon{
     max-height: 70px;
     max-width: 90px;
@@ -173,4 +187,16 @@ body{
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+#filter-input{
+  width: 300px;
+  display:inline;
+}
+
+#filters{
+  margin: 5px;
+  height: 25px;
+  background-color: rgb(171, 171, 171);
 }
