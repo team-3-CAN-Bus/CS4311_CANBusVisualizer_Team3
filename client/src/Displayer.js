@@ -1,8 +1,11 @@
+//const { read } = require("fs");
 
 // the list of the nodes that were detected on the stream
 var nodeList = {};
 //Wanted to read the txt file but cannot do it on base js
 let file = '../dist/J1939-Sample-Data-CL3000.TXT';
+
+const worker = new Worker("../src/worker.js");
 
 //the last node that was clicked for selection
 let lastNodeClicked ='';
@@ -16,7 +19,7 @@ let fileContents = ["11T082554602;1;cf00203;cd402800043828ff","11T082554603;1;c0
 //get the table from the page
 let table = document.getElementById('table-body')
 //aux vars
-var flag = false;
+//var flag = false;
 var i = 0;
 
 
@@ -213,4 +216,22 @@ function filter() {
     }       
   }
 }
+
+worker.onmessage = function(message){
+  console.log(message.data)
+}
+
+const play = document.getElementById('play-button');
+play.addEventListener('click', async (event) => {
+  //await readTraffic();
+  worker.postMessage('something');
+  
+});
+/*
+const flag = false;
+async function readTraffic(){
+  while(flag == false){
+    console.log("shiiiiiit");
+  }
+}*/
 
