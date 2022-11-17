@@ -54,9 +54,9 @@ recordRoutes.route("/projects/add").post(function (req, response) {
 
 // This section will help you delete a record
 recordRoutes.route("/:id").delete((req, response) => {
-    let db_connect = dbo.getDb();
+    let db_connect = dbo.getDb("projects");
     let myquery = { _id: ObjectId(req.params.id) };
-    db_connect.collection("projects").deleteOne(myquery, function (err, obj) {
+    db_connect.collection("projectConfig").deleteOne(myquery, function (err, obj) {
         if (err) throw err;
         console.log("1 document deleted");
         response.json(obj);

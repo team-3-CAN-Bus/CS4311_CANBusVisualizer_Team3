@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+        <div id='container'>
+            <div id="left-column">
+                <div class="toolbar">
+                    <div class="dropdown">
+                        <button class="dropbtn">File</button>
+                        <div class="dropdown-content">
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Edit</button>
+                        <div class="dropdown-content">
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">View</button>
+                        <div class="dropdown-content">
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                        </div>
+                    </div>
+
+                    <select name="packets" id="filters">
+                        <option value="2">ID</option>
+                        <option value="1">Type</option>
+                        <option value="0">Timestamp</option>
+                        <option value="3">Data</option>
+                    </select>
+
+                    <input type="text" id="filter-input" onkeyup="filter()" placeholder="Filter" title="Type in a name"> 
+                    
+                    <button id ="pause-button" class="toolbar-button" style="float: right;">
+                        <img style="height: 25px; width: 35px;" src="../dist/assets/pause.png"alt = "s"/></button>
+
+                    <button id ="play-button" class="toolbar-button" style="float: right;">
+                        <img style="height: 25px; width: 35px;" src="../dist/assets/play.png"alt = "s"/></button>
+
+
+                </div>
+                <table id="message-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Timestamp</th>
+                            <th onclick="sortTable(1)">Type</th>
+                            <th onclick="sortTable(3)">ID</th>
+                            <th onclick="sortTable(4)">Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+       
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div id="right-column">
+                <div class="toolbar">
+                    <div class="dropdown">
+                        <button class="dropbtn">File</button>
+                        <div class="dropdown-content">
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Edit</button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="document.getElementById('id01').style.display='block'">Add Node</a>
+                            <a href="#">Remove Node</a>
+                            <a href="#">Set as Off-limits</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">View</button>
+                        <div class="dropdown-content">
+                            <a href="#">-</a>
+                            <a href="#">-</a>
+                            <a href="#">option</a>
+                        </div>
+                    </div>
+
+                     <!--... <svg><line x1="50" y1="50" x2="122" y2="1222" stroke="black"/></svg>-->
+                </div>
+                
+                <canvas id="canvas" height="100%" width="100%"></canvas>
+
+
+
+                <div id="id01" class="modal">
+                    <div class="modal-content" style="max-width:600px">
+                
+                      <form class="modal-add" id="modal-add">
+                        <div class="section">
+                          <label><b>Node ID</b></label>
+                          <input id="nodeID" class="input" type="text" placeholder="enter ID" name="usrname" required>
+                          <label><b>Node Name</b></label>
+                          <input id="nodeName" class="input" type="text" placeholder="enter Name" name="nodeN" required>
+                          <button class="button" type="submit">add node</button>
+                        </div>
+                      </form>
+                
+                      <div class="container">
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="button">Cancel</button>
+                      </div>
+                
+                    </div>
+                  </div>
+                </div>
+
+
+            </div>
+
+        </div> 
+        <link rel="stylesheet" href="styles/Displayer.css"> 
+        <script src="../src/Displayer.js"></script>
+</body>

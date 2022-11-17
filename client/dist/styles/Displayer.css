@@ -1,0 +1,202 @@
+/*the left side of the page style*/
+#left-column{
+    background-color: rgb(155, 155, 155);
+    height: 100%;
+    flex: scroll;
+    width: 49%;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid;
+    border-color: black;
+}
+/*Right side of the page style*/
+#right-column{
+    background-image: url('../assets/CAR.png');
+    background: size 150px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(214, 222, 227);
+    height: 100%;
+    width: 50%;
+    flex: scroll;
+    float:right;
+    border: 1px solid;
+    border-color: black;
+}
+
+/* The container that contains everything in the page*/
+#container{
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+#container:after{
+    content:"";
+    clear:both;
+    display: table;
+}
+/*Testing, change how the elements are shown inside of the body*/
+body{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+/*style of the table, table header and table cell*/
+table, th, td {
+    border: 1px solid;
+
+}
+/*style props for the table only*/
+table{
+    width: 100%;
+    height:auto;
+    background-color: white;
+}
+/*doesn't work*/
+tr:hover{
+    background-color: rgb(108, 150, 150);
+}
+
+th:hover{
+  background-color: rgb(78, 76, 76);
+  color:white;
+}
+/*props for the headers only*/
+th{
+    background-color: rgb(180, 180, 180);
+}
+/*for the table to have rows of different colors (alternating)*/
+/*tr:nth-child(even) {
+    background-color: #f2f2f2;
+}*/
+
+/*buttons in the tool bar */
+.toolbar-button{
+    min-width: 30px;
+    height: 30px;
+    background-color: rgb(168, 165, 165);
+}
+/*the bar on top of the map and table*/
+.toolbar{
+    width: 100%;
+    height: 40px;
+    background-color: gray;
+    padding-right: 30px;
+}
+/*changed the body background*/
+body{
+    background-color: gray;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    border:2px solid black;
+    height: 35px;
+    min-width: 60px;
+    background-color: rgb(169, 169, 169);
+  }
+  
+ .dropdown:hover .dropbtn {
+    background-color: rgb(79, 163, 196);
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+/*It's not being used so far, maybe later*/
+  #canvas{
+    background-color: rgba(249, 6, 6, 0.0);
+  }
+
+  /*Html element with class node: the */
+  .node{
+    z-index: 9;
+    cursor: move;/*the cursor will change to a cross when hovering over the element*/
+    position: absolute;/*properties that will change the way the elemtn is displayed*/
+    display:flex;
+    flex-wrap: wrap;
+    border-radius: 25px;
+    height: fit-content;
+    max-width: 80px;
+    padding: 12px;
+  }
+  /*When the node is clicked on, change the color to blue*/
+  .node:active{
+  background-color: aqua;
+}
+/*elements of class icon, it's just an img element*/
+  .icon{
+    max-height: 70px;
+    max-width: 90px;
+  }
+
+  /* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+#filter-input{
+  width: 300px;
+  display:inline;
+}
+
+#filters{
+  margin: 5px;
+  height: 25px;
+  background-color: rgb(171, 171, 171);
+}

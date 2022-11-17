@@ -1,0 +1,68 @@
+.box{
+    background-color: rgba(4, 40, 66,0.9);
+    max-width: 75%;
+    max-height: 85%;
+    border-radius: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-landing{
+    min-height: 150px;
+    min-width: 180px;
+    max-width: fit-content;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: cadetblue;
+  }
+
+button:active {
+  background-color: rgb(112, 139, 150);
+}
+
+.button-landing:hover {
+    background-color: rgb(10, 126, 172);
+  }
+
+  h2{
+    align-content: center;
+    color: white;
+  }
+
+  .content{
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    max-height: 75%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+ 
+  #container{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-image: url('../assets/Landing.png');
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  #logo{
+    border-radius: 20px;
+    min-width: 35%;
+    max-height: 45%;
+  }
+.icon{
+  max-height: 70px;
+  max-width: 90px;
+}
+.button-margin{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
