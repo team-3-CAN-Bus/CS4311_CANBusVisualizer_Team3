@@ -15,37 +15,50 @@ class read():
         self.decoded_json = []
 
 
-def recvDBC(self):
+    def recvDBC(self):
 
-    while True:
-        msg = self.bus.recv(4)
-        print("Message: ", msg)
-        print("Channel Info", self.bus.channel_info, ".")
-        if msg:
-            self.decoded - self.db.decode_message(msg.arbitration_id, msg.data)
-            print("Decoded Message:", self.db.decode_message(msg.arbitration_id, msg.data))
-            self.packet =  msg
+        while True:
+            msg = self.bus.recv(4)
+            print("Message: ", msg)
+            print("Channel Info", self.bus.channel_info, ".")
+            if msg:
+                self.decoded - self.db.decode_message(msg.arbitration_id, msg.data)
+                print("Decoded Message:", self.db.decode_message(msg.arbitration_id, msg.data))
+                self.pkt =  msg
 
-            if self.pkt:
-                self.writeJson()
-                self.writeDecodedJson()
-
-
-def DecodedJSON(self, filename = "decoded_json.json"):
-    with open(filename, "w", encoding = 'utf8') as file:
-        self.decoded = str(self.decoded)
-        values = self.decoded.split()
-        self.decoded_json.append({
-            "Enable": values[1],
-            "AverageRadius": values[3],
-            "Temperature": values[5],
-        })
-
-        json.dump(self.decoded_json, file, indent=2)
-        print("Decoded JSON: ")
+                if self.pkt:
+                    self.writeJson()
+                    self.writeDecodedJson()
 
 
-def EncodedJSON(self, filename = "json.json"):
-    with open(filename, "w", encoding = 'utf8') as file:
-        self.pkt = str(self.pkt)
-        values = self.pkt.split()
+    def DecodedJSON(self, filename = "decoded_json.json"):
+        with open(filename, "w", encoding = 'utf8') as file:
+            self.decoded = str(self.decoded)
+            values = self.decoded.split()
+            self.decoded_json.append({
+                "Enable": values[1],
+                "AverageRadius": values[3],
+                "Temperature": values[5],
+            })
+
+            json.dump(self.decoded_json, file, indent=2)
+            print("Decoded JSON: ")
+
+
+    def EncodedJSON(self, filename = "json.json"):
+        with open(filename, "w", encoding = 'utf8') as file:
+            self.pkt = str(self.pkt)
+            values = self.pkt.split()
+            len = " ".join(values[8:15])
+            channel = values[17]
+            annotate = '-'
+            self.json.append({
+                "timestamp": values[1],
+                "id": values[3],
+                "s": values[5],
+                "len": len,
+                "channel": channel,
+                "annotate": annotate
+            })
+            json.dump(self.json, file, indent=4)
+            print("JSON created ...")
