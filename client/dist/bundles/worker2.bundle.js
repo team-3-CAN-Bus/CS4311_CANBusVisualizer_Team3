@@ -1,10 +1,11 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 //const { read } = require("fs");
 
 // the list of the nodes that were detected on the stream
 var nodeList = {};
 //Wanted to read the txt file but cannot do it on base js
 let file = '../dist/J1939-Sample-Data-CL3000.TXT';
-var keepReading =false;
+
 const worker = new Worker("../src/worker.js");
 
 //the last node that was clicked for selection
@@ -217,39 +218,15 @@ function filter() {
   }
 }
 
-
 worker.onmessage = function(message){
-  const type = message.data.info.data.type;
-  const id =  message.data.info.id;
-  const data = message.data.info.data.data;
-  const usecs = message.data.info.ts_sec;
-  
-  const row = document.createElement('tr');
-  row.innerHTML=`<td> ${usecs}</td>
-                 <td> ${type}</td>
-                 <td> ${id}</td>
-                 <td> ${data}</td>`
-  table.appendChild(row); 
-  console.log(keepReading)
-  if(keepReading == true){worker.postMessage('read');}  
+  console.log(message.data)
 }
 
 const play = document.getElementById('play-button');
 play.addEventListener('click', async (event) => {
   event.preventDefault();
   //await readTraffic();
-  keepReading = true;
-  worker.postMessage('read');
-
-});
-
-const pause = document.getElementById('pause-button');
-pause.addEventListener('click', async (event) => {
-  event.preventDefault();
-  //await readTraffic();
-  console.log(keepReading)
-  keepReading = false;
-  worker.postMessage('stop');
+  worker.postMessage('something');
   
 });
 /*
@@ -260,3 +237,5 @@ async function readTraffic(){
   }
 }*/
 
+
+},{}]},{},[1]);
