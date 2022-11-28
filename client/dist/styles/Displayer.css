@@ -13,15 +13,15 @@
 }
 /*Right side of the page style*/
 #right-column{
-    background-image: url('../assets/CAR.png');
+    /*background-image: url('../assets/CAR.png');*/
     background: size 150px;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgb(214, 222, 227);
+    background-color: rgb(214, 222, 227,0.0);
     height: 100%;
     width: 50%;
-    flex: scroll;
+    flex:content;
     float:right;
     border: 1px solid;
     border-color: black;
@@ -87,6 +87,10 @@ th{
     height: 40px;
     background-color: gray;
     padding-right: 30px;
+}
+
+.toolbar::after{
+  padding: auto;
 }
 /*changed the body background*/
 body{

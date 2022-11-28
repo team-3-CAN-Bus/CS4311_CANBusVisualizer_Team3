@@ -1,4 +1,6 @@
+/// <reference path="typescript/global.d.ts" />
 //const { read } = require("fs");
+//var diagramming = require("@mindfusion/pack ");
 
 // the list of the nodes that were detected on the stream
 var nodeList = {};
@@ -49,20 +51,23 @@ for(let node in nodeList){
   //change the div class to node
   newNode.className ='node';
   //add the icon inside of the div the icon is inside of the assets folder of the project
-  newNode.innerHTML = `<img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
+  newNode.innerHTML = `<select name="opt" id="something"> <a href="#">Opt</a>   
+                       <option value="1">Type</option>  
+                       <option value="0">Timestamp</option>
+                       </select> <img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
   //change the position with the offset so that nodes appear one every <offset> pixels
   newNode.style.left = `${offset}px`;
   //add to the offset
   offset += 80;
   //add the node to the right side of the page
-const line = document.createElement("svg");
-line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
-
+//const line = document.createElement("svg");
+//line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
   
-  right.append(newNode);
-  right.append(line);
+  
+  //right.append(newNode);
+  //right.append(line);
   //make the node draggable
-  dragElement(newNode);
+  //dragElement(newNode);
 
 }
 
@@ -260,3 +265,52 @@ async function readTraffic(){
   }
 }*/
 
+var Diagram = MindFusion.Diagramming.Diagram;
+var ShapeNode = MindFusion.Diagramming.ShapeNode;
+var NodeListView = MindFusion.Diagramming.NodeListView;
+
+var Rect = MindFusion.Drawing.Rect;
+var Size = MindFusion.Drawing.Size;
+
+var diagram = null;
+
+document.addEventListener("DOMContentLoaded", function()
+{
+  right.innerHTML ="";
+  const canvas = document.createElement('CANVAS');
+  canvas.style.height = '90%';
+  canvas.style.width = '100%';
+  canvas.style.backgroundColor = 'rgba(249, 6, 6, 0.0)';
+  canvas.id = "canvas";
+  right.appendChild(canvas);
+  
+
+   // create a DiagramView component that wraps the "diagram" canvas
+	var diagramView = MindFusion.Diagramming.DiagramView.create(document.getElementById("canvas"));
+	diagram = diagramView.diagram;
+	diagram.backBrush = '#e6f2ff';	
+
+    var node = new ShapeNode(diagram);
+    node.bounds = new Rect(50, 15, 30, 25);
+    node.text = "My first node";
+    node.brush = "#b3d9ff";
+    diagram.addItem(node);
+
+    var shapeIds = ["Cloud", "Cube", "Cylinder"];
+
+    //var nodeList = NodeListView.create(document.getElementById("nodeList"));
+    //nodeList.iconSize = new Size(96, 96);
+    //nodeList.defaultNodeSize = new Size(24, 24);
+
+    for(var i = 0; i < shapeIds.length; i++)
+    {
+        var sNode = new ShapeNode();
+        sNode.shape = shapeIds[i];
+        sNode.brush = "#b3d9ff";
+        //nodeList.addNode(sNode, "");
+    }
+
+
+
+
+});
