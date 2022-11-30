@@ -18,16 +18,24 @@ self.onmessage = async function (message) {
   if(message.data == "read"){
     listen = true;
     while(listen == true){
-      const response = await fetch('http://127.0.0.1:8383/buffer',{method: 'GET'})
-      //console.log(response)
-      const data = await response.json();
-      console.log(data.info);
-      self.postMessage(data);
+      delay(100).then(async ()=>{
+        const response = await fetch('http://127.0.0.1:8383/buffer',{method: 'GET'})
+        //console.log(response)
+        const data = await response.json();
+        console.log(data.info);
+        self.postMessage(data);
+      })
     }
   }else{
-    listen = false;
-  }
+      listen = false;
+    }
+      };
 
+    
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+  
 
     //let length = parseInt(message.data)
     //console.log('something from the other side');
@@ -42,4 +50,4 @@ self.onmessage = async function (message) {
     //let obj = JSON.parse(JSON.stringify(obj));
     
 
-  }
+  

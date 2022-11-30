@@ -33,7 +33,8 @@ for(let row of fileContents){
     newTableRow.innerHTML=`<td> ${rowContents[0]}</td>
                            <td> ${rowContents[1]}</td>
                            <td> ${rowContents[2]}</td>
-                           <td> ${rowContents[3]}</td>`;
+                           <td> ${rowContents[3]}</td>
+                           <td> <input type="checkbox"/> </td>`;
     table.appendChild(newTableRow);
   if(!(rowContents[2] in nodeList)){nodeList[rowContents[2]] = `node${i}`;i++;}
 }
@@ -314,4 +315,6 @@ document.addEventListener("DOMContentLoaded", function()
 
 
 });
+
+table.addEventListener()
 

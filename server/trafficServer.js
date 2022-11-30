@@ -19,8 +19,7 @@ app.get('/buffer',(req,res) =>{
 })
 
 app.post('/message',(req,res)=>{
-    const {parcel} =req.body
-    console.log(parcel);
+    console.log(req.body);
     arr[indx] = parcel;
     if(!parcel){return res.status(400).send({status: 'failed'})}
     res.status(200).send({status: 'recieved'})
