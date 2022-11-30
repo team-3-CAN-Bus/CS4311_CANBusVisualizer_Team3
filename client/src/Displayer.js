@@ -224,16 +224,19 @@ function filter() {
 
 
 worker.onmessage = function(message){
-  const type = message.data.info.data.type;
-  const id =  message.data.info.id;
-  const data = message.data.info.data.data;
-  const usecs = message.data.info.ts_sec;
+  //const type = message.data.info.data.timestamp;
+  console.log(message.data.Object)
+  console.log(message.data.id)
+  const time = message.data.timestamp;
+  const id =  message.data.id;
+  const len = message.data.len;
+  const channel = message.data.channel;
   
   const row = document.createElement('tr');
-  row.innerHTML=`<td> ${usecs}</td>
-                 <td> ${type}</td>
+  row.innerHTML=`<td> ${time}</td>
                  <td> ${id}</td>
-                 <td> ${data}</td>`
+                 <td> ${channel}</td>
+                 <td> ${len}</td>`
   table.appendChild(row); 
   console.log(keepReading)
   if(keepReading == true){worker.postMessage('read');}  

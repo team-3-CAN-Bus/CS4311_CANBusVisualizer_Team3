@@ -3,6 +3,7 @@ import cantools
 import os
 import json
 import requests
+import re
 
 
 class read():
@@ -22,7 +23,8 @@ class read():
 
     def recvDBC(self):
         print("logread recvDBC entered")
-        while True:
+        msg = self.bus.recv(4)
+        while msg:
             msg = self.bus.recv(4)
             print("Message: ", msg)
             print("Channel Info", self.bus.channel_info, ".")
@@ -34,22 +36,25 @@ class read():
 
                 if self.pkt:
                     self.EncodedJSON()
-                    self.DecodedJSON()
+                   # self.DecodedJSON()
 
-    # def POSTJSON(self)
 
 
     def DecodedJSON(self, filename = "decoded_json.json"):
         with open(filename, "w", encoding = 'utf8') as file:
             self.decoded = str(self.decoded)
-            values = self.decoded.split()
-            self.decoded_json.append({
-                
-                
-            })
-            print("len of values: ", len(values))
-            json.dump(self.decoded_json, file, indent=2)
-            print("Decoded JSON: ")
+            values = re.split(r'[,:]', self.decoded)
+           # i = 0
+           # while(i < len(values)-1):
+
+               # r = requests.post('http://127.0.0.1:8383/message', json={
+               # "Component": values[i],
+                #"Value": values[i+1],
+               # })
+                #print(f"Status code: {r.status_code}, Response: {r.json()}")
+               # i = i+2
+        #json.dump(self.decoded_json, file, indent=2)
+        #print("Decoded JSON: ")
 
 
     def EncodedJSON(self, filename = "json.json"):
@@ -69,6 +74,7 @@ class read():
             })
             json.dump(self.json, file, indent=4)
             print("JSON created ...")
+            self.POSTJSON()
     
     
     def POSTJSON(self):

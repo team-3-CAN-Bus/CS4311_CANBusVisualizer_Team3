@@ -11,6 +11,9 @@
 //channel.addListener("onMessage", channel.send, channel);
 
 //channel.start();
+function sleep(milliseconds) {  
+  return new Promise(resolve => setTimeout(resolve, milliseconds));  
+}
 
 var listen = false;
 
@@ -18,11 +21,16 @@ self.onmessage = async function (message) {
   if(message.data == "read"){
     listen = true;
     while(listen == true){
+      await sleep(5000);
       const response = await fetch('http://127.0.0.1:8383/buffer',{method: 'GET'})
       //console.log(response)
       const data = await response.json();
       console.log(data.info);
-      self.postMessage(data);
+      if(data != ""){
+        self.postMessage(data);
+      }
+      
+      
     }
   }else{
     listen = false;
