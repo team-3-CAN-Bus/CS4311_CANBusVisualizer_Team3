@@ -293,24 +293,25 @@ document.addEventListener("DOMContentLoaded", function()
     var node = new ShapeNode(diagram);
     node.bounds = new Rect(50, 15, 30, 25);
     node.text = "My first node";
-    node.brush = "#b3d9ff";
+   // node.brush = "#b3d9ff";
     diagram.addItem(node);
 
-    var shapeIds = ["Cloud", "Cube", "Cylinder"];
+   // var shapeIds = ["Cloud", "Cube", "Cylinder"];
 
     //var nodeList = NodeListView.create(document.getElementById("nodeList"));
     //nodeList.iconSize = new Size(96, 96);
     //nodeList.defaultNodeSize = new Size(24, 24);
 
-    for(var i = 0; i < shapeIds.length; i++)
+    /*for(var i = 0; i < shapeIds.length; i++)
     {
         var sNode = new ShapeNode();
         sNode.shape = shapeIds[i];
         sNode.brush = "#b3d9ff";
         //nodeList.addNode(sNode, "");
-    }
+    }*/
 
 
 
 
 });
+

@@ -25,4 +25,12 @@ app.post('/message',(req,res)=>{
     if(!parcel){return res.status(400).send({status: 'failed'})}
     res.status(200).send({status: 'recieved'})
 })
+
+app.post('/something',(req,res)=>{
+    //const {parcel} =req.body
+    console.log(req.body.somekey);
+    //arr[indx] = parcel;
+    if(!req.body){return res.status(400).send({status: 'failed'})}
+    res.status(200).send({status: 'recieved'})
+})
 app.listen(port,()=> console.log('listening on port 8383'));
