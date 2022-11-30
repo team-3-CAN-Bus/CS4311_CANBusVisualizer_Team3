@@ -70,6 +70,7 @@ class read():
             })
             json.dump(self.json, file, indent=4)
             print("JSON created ...")
+            self.POSTJSON()
     
     
     def POSTJSON(self):
@@ -78,7 +79,7 @@ class read():
         len = " ".join(values[8:15])
         channel = values[17]
         annotate = '-'
-        r = requests.post('http://127.0.0.1/echo/post/json', json={
+        r = requests.post('http://127.0.0.1:8383/message', json={
             "timestamp": values[1],
             "id": values[3],
             "s": values[5],
