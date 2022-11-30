@@ -21,20 +21,18 @@ self.onmessage = async function (message) {
   if(message.data == "read"){
     listen = true;
     while(listen == true){
-      await sleep(5000);
       const response = await fetch('http://127.0.0.1:8383/buffer',{method: 'GET'})
       //console.log(response)
       const data = await response.json();
       console.log(data.info);
-      if(data != ""){
-        self.postMessage(data);
-      }
-      
-      
+      self.postMessage(data);
     }
   }else{
-    listen = false;
-  }
+      listen = false;
+    }
+      };
+
+
 
 
     //let length = parseInt(message.data)
