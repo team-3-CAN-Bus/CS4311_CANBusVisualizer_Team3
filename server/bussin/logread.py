@@ -2,6 +2,9 @@ import can
 import cantools
 import os
 import json
+import requests
+
+
 
 class read():
 
@@ -9,7 +12,7 @@ class read():
         self.pkt=None
         self.cwd = os.getcwd()
         self.db = cantools.db.load_file(self.cwd + "/j1939_1.dbc")
-        self.bus = can.interface.Bus(bustype='socketcan', channel='can0', bitrate = 25000)
+        self.bus = can.interface.Bus(bustype='socketcan', channel='vcan0', bitrate = 125000)
         self.db_msg = self.db.get_message_by_name("GFD")
         self.json = []
         self.decoded_json = []
@@ -33,6 +36,8 @@ class read():
                 if self.pkt:
                     self.EncodedJSON()
                     self.DecodedJSON()
+
+    # def POSTJSON(self)
 
 
     def DecodedJSON(self, filename = "decoded_json.json"):
@@ -67,3 +72,18 @@ class read():
             print("JSON created ...")
     
     
+    def POSTJSON(self):
+        self.pkt = str(self.pkt)
+        values = self.pkt.split()
+        len = " ".join(values[8:15])
+        channel = values[17]
+        annotate = '-'
+        r = requests.post('http://127.0.0.1/echo/post/json', json={
+            "timestamp": values[1],
+            "id": values[3],
+            "s": values[5],
+            "len": len,
+            "channel": channel,
+            "annotate": annotate
+        })
+        print(f"Status code: {r.status_code}, Response: {r.json()}")

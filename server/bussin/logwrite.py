@@ -6,7 +6,7 @@ class write():
     def __init__(self):
         self.cwd = os.getcwd()
         self.db = cantools.db.load_file(self.cwd + "/j1939_1.dbc")
-        self.bus = can.interface.Bus(bustype='socketcan', channel = 'can0', bitrate = 1000)
+        self.bus = can.interface.Bus(bustype='socketcan', channel = 'vcan0', bitrate = 125000)
         self.db_msg = self.db.get_message_by_name("RBR") 
 
     def sendDBC(self):
@@ -18,4 +18,4 @@ class write():
             print("Message sent on {}".format(self.bus.channel_info), self.msg)
 
         except can.CanError:
-            print("Message NOT sent")
+            print("Message failed.")
