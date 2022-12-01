@@ -315,14 +315,6 @@ testButton.addEventListener('click', async (event) => {
     // const res =await fetch('http://127.0.0.1:8383/save_packet', 
     // {method: 'GET'});
 
-    const packet = await fetch('http://127.0.0.1:8383/save_packet', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        packet: final_row_data
-      })
-    })
-  }
+  const packet = await fetch('http://127.0.0.1:8383/save_packet', {method: 'POST',headers: {"Content-Type": "application/json"},body: JSON.stringify({packet: final_row_data})});
+
 });
