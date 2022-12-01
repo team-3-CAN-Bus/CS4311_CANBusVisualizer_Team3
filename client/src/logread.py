@@ -23,15 +23,15 @@ class read():
 
     def recvDBC(self):
         print("logread recvDBC entered")
-        msg = self.bus.recv(4)
-        while msg:
+        #msg = self.bus.recv(4)
+        while True:
             msg = self.bus.recv(4)
             print("Message: ", msg)
             print("Channel Info", self.bus.channel_info, ".")
             if msg:
                 msg_arbID = self.int_to_hex(msg.arbitration_id)
                 self.decoded = self.db.decode_message(msg.arbitration_id,msg.data)
-                print("Decoded Message:", self.db.decode_message(msg.arbitration_id, msg.data))
+                #print("Decoded Message:", self.db.decode_message(msg.arbitration_id, msg.data))
                 self.pkt =  msg
 
                 if self.pkt:

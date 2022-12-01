@@ -11,26 +11,30 @@
 //channel.addListener("onMessage", channel.send, channel);
 
 //channel.start();
-function sleep(milliseconds) {  
-  return new Promise(resolve => setTimeout(resolve, milliseconds));  
+function sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 var listen = false;
 
 self.onmessage = async function (message) {
-  if(message.data == "read"){
+  if (message.data == "read") {
     listen = true;
-    while(listen == true){
-      const response = await fetch('http://127.0.0.1:8383/buffer',{method: 'GET'})
-      //console.log(response)
-      const data = await response.json();
-      console.log(data.info);
-      self.postMessage(data);
+    while (listen == true) {
+      const response = await fetch('http://127.0.0.1:8383/buffer', { method: 'GET' })
+      if (response.status == "failed") {
+        console.log("FAILED BADLY")
+      } else {
+        //console.log(response)
+        const data = await response.json();
+        //console.log(data.info);
+        self.postMessage(data);
+      }
     }
-  }else{
-      listen = false;
-    }
-      };
+  } else {
+    listen = false;
+  }
+};
 
 
 
@@ -46,6 +50,3 @@ self.onmessage = async function (message) {
     //channel.addListener("onMessage", channel.send, channel);
     //channel.start();
     //let obj = JSON.parse(JSON.stringify(obj));
-    
-
-  }

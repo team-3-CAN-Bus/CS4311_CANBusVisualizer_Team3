@@ -1,4 +1,4 @@
 import logread
-
-logread.read().recvDBC()
+while(1): 
+    logread.read().recvDBC()
   
