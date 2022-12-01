@@ -52,19 +52,27 @@ for (let node in nodeList) {
   //change the div class to node
   newNode.className = 'node';
   //add the icon inside of the div the icon is inside of the assets folder of the project
-  newNode.innerHTML = `<select name="opt" id="something"> <a href="#">Opt</a>   
-                       <option value="1">Type</option>  
-                       <option value="0">Timestamp</option>
-                       </select> <img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
+  newNode.innerHTML = `<img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
   //change the position with the offset so that nodes appear one every <offset> pixels
   newNode.style.left = `${offset}px`;
   //add to the offset
   offset += 80;
   //add the node to the right side of the page
+<<<<<<< HEAD
   //const line = document.createElement("svg");
   //line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
 
 
+=======
+//const line = document.createElement("svg");
+
+
+//line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
+newNode.addEventListener('click',async (event)=>{
+    lastNodeClicked = newNode.id;
+})  
+  
+>>>>>>> 390191e (made some corrections to remove node)
   right.append(newNode);
   //right.append(line);
   //make the node draggable
@@ -108,11 +116,19 @@ function dragElement(elmnt) {
     e = e || window.event;
     e.preventDefault();
     console.log(lastNodeClicked)
+<<<<<<< HEAD
     if (e.target.className === "node") {
       if (lastNodeClicked !== "") {
         let last = document.getElementById(lastNodeClicked);
         last.style.backgroundColor = 'rgb(0,0,0,0.0)';
       }
+=======
+    if(e.target.className ==="node"){
+      // if(lastNodeClicked !== NaN){
+      //   let last = document.getElementById(lastNodeClicked);
+      //   last.style.backgroundColor ='rgb(0,0,0,0.0)';
+      
+>>>>>>> 390191e (made some corrections to remove node)
       console.log(elmnt.id);
       lastNodeCliecked = elmnt.id;
       elmnt.style.backgroundColor = 'red';
@@ -313,4 +329,26 @@ testButton.addEventListener('click', async (event) => {
 
   const packet = await fetch('http://127.0.0.1:8383/save_packet', {method: 'POST',headers: {"Content-Type": "application/json"},body: JSON.stringify({packet: final_row_data})});
 
+<<<<<<< HEAD
 });
+=======
+  const packet = await fetch('http://127.0.0.1:8383/save_packet', {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        packet: final_row_data
+    })
+})
+}});
+
+
+const rmNode = document.getElementById('rmvNode');
+rmNode.addEventListener('click', async (event)=>{
+  if(lastNodeClicked != undefined){
+      const n = document.getElementById(`${lastNodeClicked}`)
+      right.removeChild(n);
+  }
+})
+>>>>>>> 390191e (made some corrections to remove node)
