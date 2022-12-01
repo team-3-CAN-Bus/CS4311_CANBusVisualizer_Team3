@@ -45,7 +45,7 @@ app.post('/save_packet', (req, res) => {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db('packet_test');
-        dbo.collection('packet_test').insertMany(myobj, function (err, res) {
+        dbo.collection('packet_test').insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log("Number of documents inserted: " + res.insertedCount);
             db.close;
