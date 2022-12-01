@@ -34,7 +34,7 @@ for(let row of fileContents){
                            <td> ${rowContents[1]}</td>
                            <td> ${rowContents[2]}</td>
                            <td> ${rowContents[3]}</td>
-                           <td> <input type="checkbox"/> </td>`;
+                           <td> <button id="button${row}">opt</button> </td>`;
     table.appendChild(newTableRow);
   if(!(rowContents[2] in nodeList)){nodeList[rowContents[2]] = `node${i}`;i++;}
 }
@@ -65,14 +65,14 @@ for(let node in nodeList){
 //line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
   
   
-  //right.append(newNode);
+  right.append(newNode);
   //right.append(line);
   //make the node draggable
-  //dragElement(newNode);
+  dragElement(newNode);
 
 }
 
-//this is the modal that appears when we press add node
+//this is the  that appears when we press add node
 const addNodeForm = document.getElementById('modal-add');
 //event listener that listens for the submit button on the modal
 addNodeForm.addEventListener('submit', async (event) => {
@@ -261,63 +261,37 @@ pause.addEventListener('click', async (event) => {
   worker.postMessage('stop');
   
 });
-/*
-const flag = false;
-async function readTraffic(){
-  while(flag == false){
-    console.log("shiiiiiit");
+
+
+table.addEventListener('click',async (event)=>{
+  event.preventDefault();
+  if (event.target.tagName == "BUTTON"){
+    document.getElementById('msgModalContainer').style.display ="block";
+    const button = event.target;
+    console.log(button.parentNode.parentNode.tagName)
+    const row = button.parentNode.parentNode;
+    const arr = row.innerText.split('\t');
+
+    document.getElementById('msgTimestamp').value= arr[0]
+    document.getElementById('msgType').value= arr[1]
+    document.getElementById('msgID').value= arr[2]
+    document.getElementById('msgData').value= arr[3]
   }
-}*/
+})
 
-var Diagram = MindFusion.Diagramming.Diagram;
-var ShapeNode = MindFusion.Diagramming.ShapeNode;
-var NodeListView = MindFusion.Diagramming.NodeListView;
-
-var Rect = MindFusion.Drawing.Rect;
-var Size = MindFusion.Drawing.Size;
-
-var diagram = null;
-
-document.addEventListener("DOMContentLoaded", function()
-{
-  right.innerHTML ="";
-  const canvas = document.createElement('CANVAS');
-  canvas.style.height = '90%';
-  canvas.style.width = '100%';
-  canvas.style.backgroundColor = 'rgba(249, 6, 6, 0.0)';
-  canvas.id = "canvas";
-  right.appendChild(canvas);
-  
-
-   // create a DiagramView component that wraps the "diagram" canvas
-	var diagramView = MindFusion.Diagramming.DiagramView.create(document.getElementById("canvas"));
-	diagram = diagramView.diagram;
-	diagram.backBrush = '#e6f2ff';	
-
-    var node = new ShapeNode(diagram);
-    node.bounds = new Rect(50, 15, 30, 25);
-    node.text = "My first node";
-   // node.brush = "#b3d9ff";
-    diagram.addItem(node);
-
-   // var shapeIds = ["Cloud", "Cube", "Cylinder"];
-
-    //var nodeList = NodeListView.create(document.getElementById("nodeList"));
-    //nodeList.iconSize = new Size(96, 96);
-    //nodeList.defaultNodeSize = new Size(24, 24);
-
-    /*for(var i = 0; i < shapeIds.length; i++)
-    {
-        var sNode = new ShapeNode();
-        sNode.shape = shapeIds[i];
-        sNode.brush = "#b3d9ff";
-        //nodeList.addNode(sNode, "");
-    }*/
+const saveMsgForm = document.getElementById('modal-saveMessage');
+//event listener that listens for the submit button on the modal
+saveMsgForm.addEventListener('submit', async (event) => {
+  event.preventDefault();//stop the page from reloading
+//get the modal window
+  const modal = document.getElementById("msgModalContainer");
+//when we submit we will hide the modal, so the display property is set to none
+  modal.style.display = 'none';
+  var myobj_1 = {timestamp:document.getElementById('msgTimestamp').value, 
+                type: document.getElementById('msgType').value, 
+                id:   document.getElementById('msgID').value,
+                data: document.getElementById('msgData').value}
 
 
-
-
-});
-
-table.addEventListener()
+})
 
