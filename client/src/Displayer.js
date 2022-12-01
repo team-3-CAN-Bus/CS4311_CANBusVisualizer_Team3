@@ -1,4 +1,4 @@
-/// <reference path="typescript/global.d.ts" />
+// <reference path="typescript/global.d.ts" />
 //const { read } = require("fs");
 //var diagramming = require("@mindfusion/pack ");
 
@@ -310,7 +310,36 @@ document.addEventListener("DOMContentLoaded", function()
         //nodeList.addNode(sNode, "");
     }
 
+});
 
+const testButton = document.getElementById('save_packets');
+testButton.addEventListener('click', async (event) =>{
+  const row_data = table.rows;
+  const final_row_data = [];
 
+  for (i=0; i < row_data.length; i++) {
+
+    const string_data = row_data[i].innerText;
+    const string_array = string_data.split("\t");
+    final_row_data.push(string_array);
+
+  }
+  // console.log("FINAL", final_row_data);
+
+  // const res =await fetch('http://127.0.0.1:8383/save_packet', 
+  // {method: 'GET'});
+
+  const packet = await fetch('http://127.0.0.1:8383/save_packet', {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        packet: final_row_data
+    })
+})
 
 });
+async function request_save_packets() {
+
+}
