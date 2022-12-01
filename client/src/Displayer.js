@@ -280,21 +280,22 @@ table.addEventListener('click',async (event)=>{
 })
 
 
-const saveMsgForm = document.getElementById('modal-saveMessage');
-//event listener that listens for the submit button on the modal
-saveMsgForm.addEventListener('submit', async (event) => {
-  event.preventDefault();//stop the page from reloading
-//get the modal window
-  const modal = document.getElementById("msgModalContainer");
-//when we submit we will hide the modal, so the display property is set to none
-  modal.style.display = 'none';
-  var myobj_1 = {timestamp:document.getElementById('msgTimestamp').value, 
-                type: document.getElementById('msgType').value, 
-                id:   document.getElementById('msgID').value,
-                data: document.getElementById('msgData').value}
-});
+// const saveMsgForm = document.getElementById('modal-saveMessage');
+// //event listener that listens for the submit button on the modal
+// saveMsgForm.addEventListener('submit', async (event) => {
+//   event.preventDefault();//stop the page from reloading
+// //get the modal window
+//   const modal = document.getElementById("msgModalContainer");
+// //when we submit we will hide the modal, so the display property is set to none
+//   modal.style.display = 'none';
+//   var myobj_1 = {timestamp:document.getElementById('msgTimestamp').value, 
+//                 type: document.getElementById('msgType').value, 
+//                 id:   document.getElementById('msgID').value,
+//                 data: document.getElementById('msgData').value}
+// });
 
 const testButton = document.getElementById('save_packets');
+
 testButton.addEventListener('click', async (event) =>{
   const row_data = table.rows;
   const final_row_data = [];
@@ -303,18 +304,13 @@ testButton.addEventListener('click', async (event) =>{
     const string_data = row_data[i].innerText;
     const string_array = string_data.split("\t");
     final_row_data.push(string_array);
+  }
+    
   // console.log("FINAL", final_row_data);
 
   // const res =await fetch('http://127.0.0.1:8383/save_packet', 
   // {method: 'GET'});
 
-  const packet = await fetch('http://127.0.0.1:8383/save_packet', {
-    method: 'POST',
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        packet: final_row_data
-    })
-})
-}});
+  const packet = await fetch('http://127.0.0.1:8383/save_packet', {method: 'POST',headers: {"Content-Type": "application/json"},body: JSON.stringify({packet: final_row_data})});
+
+});
