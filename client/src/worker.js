@@ -11,6 +11,9 @@
 //channel.addListener("onMessage", channel.send, channel);
 
 //channel.start();
+function sleep(milliseconds) {  
+  return new Promise(resolve => setTimeout(resolve, milliseconds));  
+}
 
 var listen = false;
 
@@ -25,8 +28,11 @@ self.onmessage = async function (message) {
       self.postMessage(data);
     }
   }else{
-    listen = false;
-  }
+      listen = false;
+    }
+      };
+
+
 
 
     //let length = parseInt(message.data)

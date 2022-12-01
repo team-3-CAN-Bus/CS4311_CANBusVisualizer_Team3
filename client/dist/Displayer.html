@@ -57,12 +57,39 @@
                             <th onclick="sortTable(1)">Type</th>
                             <th onclick="sortTable(3)">ID</th>
                             <th onclick="sortTable(4)">Data</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
        
                     </tbody>
                 </table>
+
+                <div id="msgModalContainer" class="modal">
+                    <div class="modal-content" style="max-width:600px">
+                
+                      <form class="modal-saveMessage" id="modal-save">
+                        <div class="section">
+                          <label><b>Timestamp</b></label>
+                          <input id="msgTimestamp" class="input" type="text" placeholder="loading" name="usrname" required>
+                          <label><b>Type</b></label>
+                          <input id="msgType" class="input" type="text" placeholder="loading" name="nodeN" required>
+                          <label><b>ID</b></label>
+                          <input id="msgID" class="input" type="text" placeholder="loading" name="nodeN" required>
+                          <label><b>Data</b></label>
+                          <input id="msgData" class="input" type="text" placeholder="loading" name="nodeN" required>
+                          
+                          <button class="button" type="submit">save</button>
+                        </div>
+                      </form>
+                
+                      <div class="container">
+                        <button onclick="document.getElementById('msgModalContainer').style.display='none'" type="button" class="button">Cancel</button>
+                      </div>
+                
+                    </div>
+                  </div>
+
             </div>
 
 
@@ -117,6 +144,8 @@
                 
                     </div>
                   </div>
+
+
                 </div>
 
 

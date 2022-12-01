@@ -1,6 +1,6 @@
 const can = require('socketcan');
 
-var channel = can.createRawChannel("vcan0", true);
+var channel = can.createRawChannel("can0", true);
 
 // Log any message
 channel.addListener("onMessage", async function(msg) { 
