@@ -1,19 +1,29 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
 const app = express();
-const cors = require("cors");
-require("dotenv").config({ path: "./config.env" });
-const port = process.env.PORT || 5000;
+const port = 5000;
+var MongoClient = require('mongodb').MongoClient;
 app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(express.json());
-app.use(require("./routes/projects"));
-// get driver connection
-const dbo = require("./db/conn");
- 
-app.listen(port, () => {
-  // perform a database connection when server starts
-  dbo.connectToServer(function (err) {
-    if (err) console.error(err);
- 
+
+app.post('/addProject', (req, res) => {
+  var url = "mongodb://localhost:27017/";
+  //var projectName = req.body.name;
+  //var projectLocation = req.body.location;
+  let myobj = {
+    projectName: req.body.name,
+    projectLocation: req.body.location
+  };
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db('projectConfig');
+    dbo.collection('projectConfig').insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      console.log("Success");
+      db.close;
+    });
   });
-  console.log(`Server is running on port: ${port}`);
-});
+  res.status(200).send({ status: 'recieved' })
+})
+app.listen(port, () => console.log('Listening on port: ' + port));

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <form>
+        <label for="name">Project Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="location">Project Location:</label><br>
+        <input type="text" id="location" name="location">
+        <button id="Submit">Submit</button>
+    </form>
+    <script>
+        const button = document.getElementById('Submit');
+        button.addEventListener('click', async (event) => {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var location = document.getElementById("location").value;
+            console.log(name);
+            console.log(location);
+            //var myobj = [{ projectName: document.getElementById("name").innerText, projectLocation: document.getElementById("location").innerHTML }]
+            const res = await fetch('http://127.0.0.1:5000/addProject', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    location: location,
+                })
+            })
+        })
+    </script>
+    <link rel="stylesheet" href="styles/index.css">
+
+</body>

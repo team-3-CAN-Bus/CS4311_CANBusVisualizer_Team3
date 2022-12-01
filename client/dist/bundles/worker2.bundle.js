@@ -1,12 +1,11 @@
-// <reference path="typescript/global.d.ts" />
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 //const { read } = require("fs");
-//var diagramming = require("@mindfusion/pack ");
 
 // the list of the nodes that were detected on the stream
 var nodeList = {};
 //Wanted to read the txt file but cannot do it on base js
 let file = '../dist/J1939-Sample-Data-CL3000.TXT';
-var keepReading =false;
+
 const worker = new Worker("../src/worker.js");
 
 //the last node that was clicked for selection
@@ -51,23 +50,20 @@ for(let node in nodeList){
   //change the div class to node
   newNode.className ='node';
   //add the icon inside of the div the icon is inside of the assets folder of the project
-  newNode.innerHTML = `<select name="opt" id="something"> <a href="#">Opt</a>   
-                       <option value="1">Type</option>  
-                       <option value="0">Timestamp</option>
-                       </select> <img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
+  newNode.innerHTML = `<img id="${nodeList[node]}"class="icon" src="../dist/assets/${nodeList[node]}.png" alt ="s"/>${nodeList[node]}`;
   //change the position with the offset so that nodes appear one every <offset> pixels
   newNode.style.left = `${offset}px`;
   //add to the offset
   offset += 80;
   //add the node to the right side of the page
-//const line = document.createElement("svg");
-//line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
+const line = document.createElement("svg");
+line.innerHTML=`<line x1="50" y1="50" x2="${offset}" y2="${2000}" stroke="black"/>`;
+
   
-  
-  //right.append(newNode);
-  //right.append(line);
+  right.append(newNode);
+  right.append(line);
   //make the node draggable
-  //dragElement(newNode);
+  dragElement(newNode);
 
 }
 
@@ -222,39 +218,15 @@ function filter() {
   }
 }
 
-
 worker.onmessage = function(message){
-  const type = message.data.info.data.type;
-  const id =  message.data.info.id;
-  const data = message.data.info.data.data;
-  const usecs = message.data.info.ts_sec;
-  
-  const row = document.createElement('tr');
-  row.innerHTML=`<td> ${usecs}</td>
-                 <td> ${type}</td>
-                 <td> ${id}</td>
-                 <td> ${data}</td>`
-  table.appendChild(row); 
-  console.log(keepReading)
-  if(keepReading == true){worker.postMessage('read');}  
+  console.log(message.data)
 }
 
 const play = document.getElementById('play-button');
 play.addEventListener('click', async (event) => {
   event.preventDefault();
   //await readTraffic();
-  keepReading = true;
-  worker.postMessage('read');
-
-});
-
-const pause = document.getElementById('pause-button');
-pause.addEventListener('click', async (event) => {
-  event.preventDefault();
-  //await readTraffic();
-  console.log(keepReading)
-  keepReading = false;
-  worker.postMessage('stop');
+  worker.postMessage('something');
   
 });
 /*
@@ -265,81 +237,5 @@ async function readTraffic(){
   }
 }*/
 
-var Diagram = MindFusion.Diagramming.Diagram;
-var ShapeNode = MindFusion.Diagramming.ShapeNode;
-var NodeListView = MindFusion.Diagramming.NodeListView;
 
-var Rect = MindFusion.Drawing.Rect;
-var Size = MindFusion.Drawing.Size;
-
-var diagram = null;
-
-document.addEventListener("DOMContentLoaded", function()
-{
-  right.innerHTML ="";
-  const canvas = document.createElement('CANVAS');
-  canvas.style.height = '90%';
-  canvas.style.width = '100%';
-  canvas.style.backgroundColor = 'rgba(249, 6, 6, 0.0)';
-  canvas.id = "canvas";
-  right.appendChild(canvas);
-  
-
-   // create a DiagramView component that wraps the "diagram" canvas
-	var diagramView = MindFusion.Diagramming.DiagramView.create(document.getElementById("canvas"));
-	diagram = diagramView.diagram;
-	diagram.backBrush = '#e6f2ff';	
-
-    var node = new ShapeNode(diagram);
-    node.bounds = new Rect(50, 15, 30, 25);
-    node.text = "My first node";
-    node.brush = "#b3d9ff";
-    diagram.addItem(node);
-
-    var shapeIds = ["Cloud", "Cube", "Cylinder"];
-
-    //var nodeList = NodeListView.create(document.getElementById("nodeList"));
-    //nodeList.iconSize = new Size(96, 96);
-    //nodeList.defaultNodeSize = new Size(24, 24);
-
-    for(var i = 0; i < shapeIds.length; i++)
-    {
-        var sNode = new ShapeNode();
-        sNode.shape = shapeIds[i];
-        sNode.brush = "#b3d9ff";
-        //nodeList.addNode(sNode, "");
-    }
-
-});
-
-const testButton = document.getElementById('save_packets');
-testButton.addEventListener('click', async (event) =>{
-  const row_data = table.rows;
-  const final_row_data = [];
-
-  for (i=0; i < row_data.length; i++) {
-
-    const string_data = row_data[i].innerText;
-    const string_array = string_data.split("\t");
-    final_row_data.push(string_array);
-
-  }
-  // console.log("FINAL", final_row_data);
-
-  // const res =await fetch('http://127.0.0.1:8383/save_packet', 
-  // {method: 'GET'});
-
-  const packet = await fetch('http://127.0.0.1:8383/save_packet', {
-    method: 'POST',
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        packet: final_row_data
-    })
-})
-
-});
-async function request_save_packets() {
-
-}
+},{}]},{},[1]);
