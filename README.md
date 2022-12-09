@@ -33,15 +33,17 @@ In the Server folder (cd server):
     
     node trafficServer.js
     
+In the Server folder (cd server):
+    
     node server.js
 
 In the Client folder (cd client/src):
 
-    1: python main.py 
+    python main.py 
     
 In a terminal instance started from the CanTools folder:
 
-    1: sudo modprobe vcan
-    2: sudo ip link add dev can0 type vcan
-    3: sudo ip link set up can0
-    4: canplayer -I workingTraffic.log can0=can0
+    sudo modprobe vcan
+    sudo ip link add dev can0 type vcan
+    sudo ip link set up can0
+    canplayer -I workingTraffic.log can0=can0
