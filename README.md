@@ -31,8 +31,9 @@ Start an instance of MongoDB Compass and connect to the default local string:
 
 In the Server folder (cd server):
     
-    1: node trafficServer.js
-    2: node server.js
+    node trafficServer.js
+    
+    node server.js
 
 In the Client folder (cd client/src):
 
